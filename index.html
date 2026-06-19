@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title translate="no">Perla Homes</title>
+
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+<!-- Overlay for sidebar -->
+<div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="closeSidebar()">&times;</button>
+    <a href="check_in.html">Check-In</a>
+
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('wifiDropdown')">Wi-Fi Code</button>
+        <div id="wifiDropdown" class="dropdown-content">
+            <p>
+                <strong>Network:</strong>
+                <span class="copyable-text" id="wifiNetwork"></span>
+                <button class="copy-btn" onclick="copyText('wifiNetwork', this)">Copy</button>
+            </p>
+            <p>
+                <strong>Password:</strong>
+                <span class="copyable-text" id="wifiPassword"></span>
+                <button class="copy-btn" onclick="copyText('wifiPassword', this)">Copy</button>
+            </p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('codeDropdown')">Entrance Code</button>
+        <div id="codeDropdown" class="dropdown-content">
+            <p>
+                <strong>Code:</strong>
+                <span class="copyable-text" id="entranceCode"></span>
+            </p>
+        </div>
+    </div>
+
+    <a class="map-link" target="_blank">Map</a>
+    <a class="tourist-link" target="_blank">Tourist Guide</a>
+    <a href="Taverns.html" target="_blank">Gastronomic Suggestions</a>
+    <a href="https://nauticholics.gr" target="_blank">Boat Cruises</a>
+    <a href="contacts.html">Contacts</a>
+</div>
+
+<!-- Sidebar open button -->
+<button class="open-btn" onclick="openSidebar()">☰ Menu</button>
+
+<!-- Language Selector -->
+<div id="google_translate_element"></div>
+
+<!-- Main Content -->
+<div class="content-container">
+    <img src="images/perla logo site.png" alt="Perla Homes Logo" id="logo" class="fade-in" />
+
+    <!-- Heading auto-filled from CONFIG -->
+    <h1 translate="no" id="main-heading" class="fade-in"></h1>
+
+    <!-- Buttons -->
+    <div class="button-container">
+
+        <div class="button-item fade-in">
+            <a class="map-link" target="_blank">
+                <img src="images/map.jpg" alt="Map" class="round-btn">
+                <span>Map</span>
+            </a>
+        </div>
+
+        <div class="button-item fade-in">
+            <button class="round-btn" onclick="showCodeBox()">
+                <img src="images/check-in.png" alt="Instructions">
+            </button>
+            <span>Instructions</span>
+        </div>
+
+        <div class="button-item fade-in">
+            <button class="round-btn" onclick="showInfoBox()">
+                <img src="images/New_button.png" alt="Useful Info">
+            </button>
+            <span>Accommodation Guide</span>
+        </div>
+
+        <div class="button-item fade-in">
+            <button class="round-btn" onclick="window.location.href='Taverns.html'">
+                <img src="images/Food_Foto.png" alt="Gastronomic">
+            </button>
+            <span>Gastronomic<br>Suggestions</span>
+        </div>
+
+        <div class="button-item fade-in">
+            <a class="tourist-link" target="_blank">
+                <img src="images/optiki-tautotita_2.jpg" alt="Tourist Guide" class="round-btn">
+                <span>Local<br>Guide</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Popups -->
+
+<!-- Wi-Fi Popup -->
+<div id="wifiCodeBox" class="popup-box">
+    <p class="highlight-full"><strong>Wi-Fi Information</strong></p>
+    <div class="popup-content">
+        <p><strong>Network:</strong> <span id="wifiNetwork"></span></p>
+        <p><strong>Password:</strong> <span id="wifiPassword"></span></p>
+        <img src="images/wifi_icon.jpg" alt="Wi-Fi Instructions" class="popup-image">
+    </div>
+    <button onclick="hideWifiCodeBox()">EXIT</button>
+</div>
+
+<!-- Entrance Code Popup -->
+<div id="codeBox" class="popup-box">
+    <p class="highlight-full">
+        <strong>Entrance Code:</strong> <span id="entranceCode"></span>
+    </p>
+    <div class="popup-content">
+        <img src="images/ABOVE LUNA SOL.jpg" class="popup-image">
+        <p>When you arrive you will see this Entrance.</p>
+        <img src="images/Villa Luna Sol.jpg" class="popup-image">
+        <p>To open the Garage door the code is 6767#</p>
+        <p>Entrance Door</p>
+        <img src="images/Door_Palomar.jpg" class="popup-image">
+          <p class="highlight-full">
+            <strong>Key Box Code:</strong> <span id="keyBoxCode"></span>
+        </p> 
+         <p>**Alarm Instructions**
+
+To disarm the alarm, place the black round key fob on the blue-lit square of the alarm panel and hold it there until you hear a beep. Once it beeps, the alarm is disarmed successfully.
+</p>
+<img src="images/Alarm Villa.jpg" class="popup-image">
+<p>**Electricity Instructions**
+
+Please insert the key card into the wall holder to activate the electricity in the villa.
+When leaving the villa, please remove the card to switch the electricity off.
+</p>
+<img src="images/Keycard_Villa.jpg" class="popup-image">
+    </div>
+    <button onclick="hideCodeBox()">EXIT</button>
+</div>
+
+<!-- Useful Information Popup -->
+<div id="infoBox" class="popup-box">
+    <p class="highlight-full"><strong>Useful Information</strong></p>
+    <div class="popup-content">
+
+        <p>Here are some important details for your stay:</p>
+
+        <p class="highlight-full"><strong>Wi-Fi</strong></p>
+        <p translate="no">UserName: <span id="wifiNetwork"></span></p>
+        <p translate="no">Password: <span id="wifiPassword"></span></p>
+
+        <p class="highlight-full"><strong>Hot Water</strong></p>
+        <p><br></p>
+        <img src="images/Pinakas_Selin.jpg" class="popup-image">
+
+        <p class="highlight-full"><strong>Check-Out</strong></p>
+        <p>- Check-out time: 11:00</p>
+        <p>Please leave the keys on the table and close the door behind you.<br>
+        Thank you for choosing <b>Perla Homes</b>!</p>
+
+    </div>
+    <button onclick="hideInfoBox()">EXIT</button>
+</div>
+
+<!-- Footer -->
+<div class="footer fade-in">
+    <div class="social-media">
+        <a href="https://www.perlahomes.gr" target="_blank"><i class="fas fa-globe social-icon"></i></a>
+        <a href="https://www.facebook.com/PerlaHomesgr/" target="_blank"><i class="fab fa-facebook social-icon"></i></a>
+        <a href="https://www.instagram.com/perla.homes/?hl=el" target="_blank"><i class="fab fa-instagram social-icon"></i></a>
+    </div>
+    <p>&copy; 2026 Perla Homes. All rights reserved.</p>
+</div>
+
+<!-- Scripts -->
+<script src="config.js"></script>
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

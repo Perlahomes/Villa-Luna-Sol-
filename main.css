@@ -1,0 +1,276 @@
+/* === GENERAL === */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    color: white;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Fonto.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    display:none;
+    z-index:1000;
+}
+
+/* Sidebar */
+.sidebar {
+    height:100%;
+    width:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: rgba(14,14,14,0.95);
+    overflow-x:hidden;
+    transition:0.4s;
+    z-index:1001;
+    padding-top:60px;
+}
+.sidebar a, .dropdown-btn {
+    padding:10px 20px;
+    text-decoration:none;
+    font-size:18px;
+    color:white;
+    display:block;
+    border:none;
+    background:none;
+    width:100%;
+    text-align:left;
+    cursor:pointer;
+    outline:none;
+    transition:0.3s;
+}
+.sidebar a:hover, .dropdown-btn:hover {background-color:#3d5e4d;}
+.sidebar .close-btn {
+    position:absolute;
+    top:15px;
+    right:25px;
+    font-size:36px;
+    color:white;
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+/* Sidebar open button */
+.open-btn {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    z-index: 10000;
+    background-color: #dec48d;
+    color: #0e0d0d;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.open-btn:hover {background-color:#dec48d; color:#0e0d0d;}
+
+/* Dropdown content */
+.dropdown-content {
+    display:none;
+    background-color:#222;
+    padding:10px 20px;
+}
+.dropdown-content p {margin:5px 0; color:#dec48d;}
+
+/* Content Container */
+.content-container {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+/* Logo & Heading */
+#logo {max-width:350px; height:auto; margin-bottom:10px;}
+#main-heading {
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+.button-container {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+.button-item {display:flex; flex-direction:column; align-items:center; text-align:center;}
+.round-btn {
+    background-color:white;
+    border:none;
+    border-radius:50%;
+    width:90px;
+    height:90px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    overflow:hidden;
+    margin-bottom:8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.round-btn img {width:120%; height:120%; object-fit:contain;}
+.round-btn:hover {transform:scale(1.1); box-shadow:0 6px 12px rgba(0,0,0,0.3); background-color:#f7f5f4;}
+.button-item span {color:white; font-size:13px; font-weight:bold; text-align:center;}
+
+/* === Popup Boxes === */
+.popup-box {
+    display: none; /* hide popups by default */
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color:#0e0d0d;
+    border:1px solid #ccc;
+    padding:20px;
+    width:320px;
+    max-height:75vh;
+    border-radius:8px;
+    text-align:center;
+    z-index:2000;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Scrollable content inside popup */
+.popup-box .popup-content {
+    overflow-y: auto;
+    max-height:65vh;
+    padding-right:5px;
+    margin-bottom:10px;
+    text-align:left;
+}
+
+/* Highlighted headers for all popups */
+.popup-box .highlight-full {
+    background-color: #fff59d;
+    color: black;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+/* Popup images */
+.popup-box .popup-image {
+    display: block;  /* <-- ensures image takes full line */
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    margin: 10px 0;  /* spacing above and below */
+}
+
+/* Popup buttons fixed at bottom */
+.popup-box button {
+    margin-top: auto;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dec48d;
+    color: #0e0d0d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    text-align:center;
+    margin-top:20px;
+    color:#7c7979;
+}
+.social-media {display:flex; justify-content:center; gap:20px; margin-top:10px;}
+.social-icon {font-size:30px; color:#7c7979; transition:0.3s;}
+.social-icon:hover {transform:scale(1.1); color:#dec48d;}
+
+/* Fade In */
+.fade-in {opacity:0; animation:fadeIn 2s forwards;}
+@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #main-heading {
+        font-size: 2.3rem;
+        line-height: 1.2;
+    }
+    .popup-box {
+        width: 90%;
+        max-height: 80vh;
+    }
+    .popup-box .popup-content {
+        max-height: 70vh;
+    }
+}
+@media (max-width: 768px) {
+    #main-heading{font-size:2.5rem;}
+    .open-btn { top: 80px; }
+}
+
+/* Copyable text in sidebar */
+.copyable-text {
+    user-select: text;
+    cursor: text;
+}
+.copy-btn {
+    margin-left: 10px;
+    padding: 2px 6px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dec48d;
+    color: #0e0d0d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.copy-btn:hover { background-color: #cbb37c; }
+
+.button-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.popup-image.enlarged {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 3000; /* above popups */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    cursor: zoom-out;
+    transition: transform 0.3s ease, max-width 0.3s ease, max-height 0.3s ease;
+}
+
+/* Optional dim background behind enlarged image */
+body.image-overlay::before {
+    content: "";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+}
